@@ -11,7 +11,6 @@
       <a href="/create">Create User</a>
     </div>
     <div class="table-container">
-      <%= JSON.stringify(listUsers)%>
       <div class="title">List User</div>
       <table>
         <tr>
@@ -20,28 +19,32 @@
           <th>Name</th>
           <th>City</th>
         </tr>
+        <!-- vòng lặp dùng for -->
+        <!-- <% for (let i = 0; i < listUsers.length; i++) { %>
         <tr>
-          <td>Peter</td>
-          <td>Griffin</td>
-          <td>$100</td>
-          <td><button>edit</button><button>delete</button></td>
+          <td><%= listUsers[i].id %></td>
+          <td><%= listUsers[i].email %></td>
+          <td><%= listUsers[i].name %></td>
+          <td><%= listUsers[i].city %></td>
+          <td>
+            <button>edit</button>
+            <button>delete</button>
+          </td>
         </tr>
+        <% } %> -->
 
+        <% listUsers.forEach(function(user) { %>
         <tr>
-          <td>Lois</td>
-          <td>Griffin</td>
-          <td>$150</td>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td><%= user.city %></td>
+          <td>
+            <a href="/update">Edit</a>
+            <button>Delete</button>
+          </td>
         </tr>
-        <tr>
-          <td>Joe</td>
-          <td>Swanson</td>
-          <td>$300</td>
-        </tr>
-        <tr>
-          <td>Cleveland</td>
-          <td>Brown</td>
-          <td>$250</td>
-        </tr>
+        <% }); %>
       </table>
     </div>
   </body>
