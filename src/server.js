@@ -19,6 +19,8 @@ app.use("/", webRouter);
 
 // A simple SELECT query
 
+//test connection
+connection();
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
 });
