@@ -48,7 +48,7 @@ const postCreateUser = async (req, res) => {
     city: city,
   });
 
-  res.send("create user succeed");
+  res.redirect("/");
 };
 const getCreatPage = (req, res) => {
   res.render("create.ejs");
@@ -84,7 +84,10 @@ const postDeleteUser = async (req, res) => {
 
 const postHandleRemoveUser = async (req, res) => {
   const id = req.body.userId;
-  await deleteUserById(id);
+  // await deleteUserById(id);
+  await User.deleteOne({
+    _id: id,
+  });
   res.redirect("/");
 };
 module.exports = {
