@@ -9,8 +9,7 @@ const {
 const User = require("../models/user");
 
 const getHomepage = async (req, res) => {
-  let results = [];
-  // console.log(">>>Check row:", results);
+  let results = await User.find({});
   return res.render("home.ejs", { listUsers: results });
 };
 
