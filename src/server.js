@@ -20,7 +20,13 @@ app.use("/", webRouter);
 // A simple SELECT query
 
 //test connection
-connection();
-app.listen(port, hostname, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+(async () => {
+  try {
+    await connection();
+    app.listen(port, hostname, () => {
+      console.log(`Backend app listening on port ${port}`);
+    });
+  } catch (error) {
+    console.log(">>> Error connecrt to DB:", error);
+  }
+})();
