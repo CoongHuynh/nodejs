@@ -4,7 +4,6 @@ const path = require("path");
 const configViewEngine = require("./config/viewEngine");
 const webRouter = require("./routes/web");
 const connection = require("./config/database");
-const Kitten = require("./models/Kitten");
 
 const app = express();
 const port = process.env.PORT || 8888;
@@ -18,9 +17,6 @@ app.use(express.urlencoded()); //Parse URL-encoded bodies
 configViewEngine(app);
 
 app.use("/", webRouter);
-
-const cat = new Kitten({ name: "Hoi Dan It model" });
-cat.save();
 
 //test connection
 (async () => {
