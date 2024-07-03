@@ -3,6 +3,7 @@ const routerAPI = express.Router();
 const {
   getUsersAPI,
   postCreateUserAPI,
+  putUpdateUserAPI,
 } = require("../controllers/apiController");
 
 routerAPI.get("/", (req, res) => {
@@ -12,5 +13,7 @@ routerAPI.get("/", (req, res) => {
 routerAPI.get("/users", getUsersAPI);
 
 routerAPI.post("/users", postCreateUserAPI);
+
+routerAPI.put("/users", putUpdateUserAPI);
 
 module.exports = routerAPI;
