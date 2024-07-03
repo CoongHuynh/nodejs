@@ -4,6 +4,7 @@ const path = require("path");
 const configViewEngine = require("./config/viewEngine");
 const webRouter = require("./routes/web");
 const connection = require("./config/database");
+const mongoose = require("mongoose");
 const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
@@ -17,7 +18,13 @@ configViewEngine(app);
 
 app.use("/", webRouter);
 
-// A simple SELECT query
+const kittySchema = new mongoose.Schema({
+  name: String,
+});
+
+const Kitten = mongoose.model("Kitten", kittySchema);
+const cat = new Kitten({ name: "Hoi Dan It Cat" });
+cat.save();
 
 //test connection
 (async () => {
